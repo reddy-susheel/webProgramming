@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" href="style.css">
+ <title>Login page</title>
+</head>
+<body class="loginPage">
+    <ul class="navBar">
+        <li><a href="login.html">Login</a></li>
+        <li><a href="register.html">Register</a></li>
+        <li><a href="successfulReg.html">In-App</a></li>
+        <li><a href="notes.html">Notes</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+    <br>
+    <div class="logImg">
+        <img src="images/loginImage1.jpg" alt="Welcome Image" width="400" height="300" class="welImg">
+    </div>
+    <h1>Yosh!</h1>
+    <form id="fillTheBlanks">
+        <fieldset>
+        <legend id="legendTag">Sign-in:</legend>
+        <label for="uName/eMail">Username/Email-ID: </label>
+        <input type="text" id="uName/eMail" for="uName/eMail">
+        <br>
+        <label for="pwd">Password: </label>
+        <input type="password" id="pwd" for="pwd">
+        <br>
+        <button formaction="successfulReg.html">Login</button>
+        <input type="reset" value="Reset"> 
+            <br>
+            <br>
+            <h4>Or</h4>
+            <br>
+            <button formaction="register.html">Sign-up</button>
+        </fieldset>
+    </form>
+    <script src="main.js"></script>
+</body>
+</html>

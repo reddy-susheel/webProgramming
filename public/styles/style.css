@@ -1,0 +1,87 @@
+.loginPage{
+    background-color: #FFC0CB;
+}
+
+.welImg, .abtImage, #noteImgTag{
+    display: flex;
+    justify-content: center;
+    border: 1px solid rgb(114, 114, 114);
+    border-radius: 4px;
+    padding: 5px;
+    width: 70%;
+}
+
+#regImg, #top3{
+    border: 1px solid rgb(114, 114, 114);
+    border-radius: 4px;
+    padding: 5px;
+}
+
+.logImg, .contactImg, .sucsImg, .noteImg{
+    display: flex;
+    justify-content: center;
+}
+
+.loginPage h1{
+    text-align: center;
+}
+
+.notesPage{
+    background-color: rgb(235, 255, 185);
+}
+
+.regPage{
+    background-color: aqua;
+}
+
+.sucsPagebody{
+    background-color: greenyellow;
+}
+
+.navBar{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.flex-content{
+    display: flex;
+    justify-content: space-around;
+    background-color: azure;
+}
+
+.flex-content > div{
+    margin: 10px;
+    padding: 20px;
+    font-size: 30px;
+}
+
+.flex-content > div > a{
+    font-weight: 700;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+
+.navBar li {
+    display: inline-block;
+}
+
+.contactPage div{
+    font-size: 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#legendTag {
+    font-weight: 900;
+    font-size: 25;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#aboutTag {
+    position: fixed;
+    bottom: 0;
+    width: 98%;
+}
+
+
