@@ -21,33 +21,32 @@ async function getAllNotes() {
   console.log(comments)
 }
 
-// Read User -- login user
-async function login(note) { // {userName: "sda", password: "gsdhjsga"}
-  let cUser = await getUser(note); //[{userName: "cathy123", password: "icecream"}]
+// async function insert(user) {
+//     // let cUser = await getUser(user);
+//     // if(cUser.length > 0) throw Error("emailID is already in use");
   
-  if(!cUser[0]) throw Error("Username not found");
-  if(cUser[0].password !== user.password) throw Error("Password incorrect");
+//     const sql = `INSERT INTO notes (notesContent, userID)
+//       VALUES ("${user.notesContent}", "${user.userID}");
+//     `
+//     await con.query(sql);
+//     return await login(user);
+//   }
 
-  return cUser[0];
+async function read(note) { // {userName: "sda", password: "gsdhjsga"}
+  let cNote = await getNotes(note); //[{userName: "cathy123", password: "icecream"}]
+  
+  if(!cNote[0]) throw Error("NoteID not found");
+  
+
+  return cNote[0];
 }
-
-async function insert(user) {
-    // let cUser = await getUser(user);
-    // if(cUser.length > 0) throw Error("emailID is already in use");
-  
-    const sql = `INSERT INTO notes (notesContent, userID)
-      VALUES ("${user.notesContent}", "${user.userID}");
-    `
-    await con.query(sql);
-    return await login(user);
-  }
   
 
 // Update User function
 async function editNotes(notes) {
   let sql = `UPDATE notes 
-    SET Note = "${user.userName}"
-    WHERE noteID = ${note.noteID}
+  SET noteContent = "${note.noteContent}"
+  WHERE userID = ${note.userID}
   `;
 
   await con.query(sql);
@@ -70,12 +69,12 @@ async function getNotes(notes) {
   if(notes.noteID) {
     sql = `
       SELECT * FROM notes
-       WHERE noteID = ${note.noteID}
+       WHERE userID = ${note.userID}
     `
   } else {
     sql = `
     SELECT * FROM notes
-      WHERE Note = "${notes.NoteId}"
+      WHERE noteID = "${notes.noteID}"
   `;
   }
   return await con.query(sql);  
@@ -84,19 +83,19 @@ async function getNotes(notes) {
 
 const notes = [
     {
-        NoteId: 1,
-        notetake:"hi" 
+        userId: 1,
+        noteID:1,
+        notetake:"omae shindeiru" 
     },
     {
-        NoteId: 2,
-        notetake:"hello Murali" 
+        userId: 2,
+        noteID: 2,
+        notetake:"hey yayi ye" 
     }
 ];
 
 function getAllNotes() {
+  return notes;  
+}
 
-    return notes;
-    
-  }
-
-module.exports = { getAllNotes, insert, login, getNotes, editNotes,deletenotes};
+module.exports = { getAllNotes, read, getNotes, editNotes,deletenotes};

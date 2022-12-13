@@ -5,17 +5,17 @@ const router = express.Router();
 router
   .get('/', async (req, res) => {
     try {
-      const Note = await User.getAllUsers();
-      res.send(Note);
+      const note = await Note.getAllUsers();
+      res.send(note);
     } catch(err) {
       res.status(401).send({message: err.message});
     }
   })
 
-  .post('/insert', async (req, res) => {
+  .post('/insertNote', async (req, res) => {
     try {
-      let noteID = await Note.insert(req.body);
-      res.send(note)
+      let note = await Note.read(req.body);
+      res.send({...note,noteContent})
     } catch(err) {
       res.status(401).send({message: err.message});
     }
@@ -23,8 +23,8 @@ router
 
 .put('/edit', async (req, res) => {
     try {
-      let noteID = await Note.editnote(req.body);
-      res.send(note);
+      let note = await Note.editNotes(req.body);
+      res.send({...note,noteContent});
     } catch(err) {
       res.status(401).send({message: err.message})
     }
@@ -32,7 +32,7 @@ router
 
   .delete('/delete', async (req, res) => {
     try {
-      User.deleteNote(req.body);
+      Note.deleteNote(req.body);
       res.send({success: "We'll Miss You... :("})
     } catch(err) {
       res.status(401).send({message: err.message})
