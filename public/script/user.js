@@ -2,14 +2,15 @@ import { fetchData, setCurrentUser } from './main.js'
 
 // user class
 class User {
-  constructor(userName, password, fullName) {
-    this.userName = userName;
-    this.password = password;
-    this.fullName = fullName;
+  constructor(firstname, lastname, username, pswd) {
+    this.firstName = firstname;
+    this.lastName = lastname;
+    this.emailID = username;
+    this.password = pswd;
   }
 
   getUsername() {
-    return this.userName;
+    return this.emailID;
   }
 }
 
@@ -20,14 +21,14 @@ if(loginForm) loginForm.addEventListener('submit', login);
 function login(e) {
   e.preventDefault();
 
-  let userName = document.getElementById("username").value;
-  let password = document.getElementById("pswd").value;
-  let user = new User(userName, password);
+  let userID = document.getElementById("uName/eMail").value;
+  let password = document.getElementById("pwd").value;
+  let user = new User(userID, password);
 
   fetchData("/users/login", user, "POST")
   .then((data) => {
     setCurrentUser(data);
-    window.location.href = "bmi.html";
+    window.location.href = "notes.html";
   })
   .catch((err) => {
     let p = document.querySelector('.error');
@@ -42,14 +43,16 @@ if(regForm) regForm.addEventListener('submit', register);
 function register(e) {
   e.preventDefault();
 
-  let userName = document.getElementById("username").value;
+  let firstname = document.getElementById("firstName");
+  let lastname = document.getElementById("lastName");
+  let userID = document.getElementById("uName/eMail").value;
   let password = document.getElementById("pswd").value;
-  let user = new User(userName, password);
+  let user = new User(firstname, lastname, userID, password);
 
   fetchData("/users/register", user, "POST")
   .then((data) => {
     setCurrentUser(data);
-    window.location.href = "bmi.html";
+    window.location.href = "notes.html";
   })
   .catch((err) =>{
     let p = document.querySelector('.error');

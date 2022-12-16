@@ -1,16 +1,16 @@
-document.getElementById("btn-users").addEventListener('click', getUsers);
+// document.getElementById("btn-users").addEventListener('click', getUsers);
 
-function getUsers() {
-  fetch("http://localhost:3000/users/")
-  .then((res)=> res.json())
-  .then((data) => console.log(data))
-  .catch((err)=> console.log(err))
-}
+// function getUsers() {
+//   fetch("http://localhost:3000/users/")
+//   .then((res)=> res.json())
+//   .then((data) => console.log(data))
+//   .catch((err)=> console.log(err))
+// }
 
-
+let nav = document.querySelector('nav');
 
 async function fetchData(route = '', data = {}, GET) {
-    const response = await fetch(`http://localhost:3000${users}`, {
+    const response = await fetch(`http://localhost:3000${route}`, {
       method: GET, // *GET, POST, PUT, DELETE, etc.
       mode: 'cors', // no-cors, *cors, same-origin
       cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -29,67 +29,86 @@ async function fetchData(route = '', data = {}, GET) {
     }
   }
 
-const register_form = document.getElementById("fillTheBlanks");
-if(register_form) register_form.addEventListener("submit", userCreator);
+// const register_form = document.getElementById("fillTheBlanks");
+// if(register_form) register_form.addEventListener("submit", userCreator);
 
-function userCreator(e){
-    e.preventDefault();
-    let firstName = ((document.getElementById("fName")||{}).value)||"";
-    let lastName = ((document.getElementById("lName")||{}).value)||"";
-    let username = ((document.getElementById("uName/eMail")||{}).value)||"";
-    let password = ((document.getElementById("pwd")||{}).value)||"";
-    let note = ((document.getElementById("notes")||{}).value)||"";
-    const newUser = new helper(firstName,lastName,username,password,note);
-    console.log(newUser);
+// function userCreator(e){
+//     e.preventDefault();
+//     let firstName = ((document.getElementById("fName")||{}).value)||"";
+//     let lastName = ((document.getElementById("lName")||{}).value)||"";
+//     let username = ((document.getElementById("uName/eMail")||{}).value)||"";
+//     let password = ((document.getElementById("pwd")||{}).value)||"";
+//     let note = ((document.getElementById("notes")||{}).value)||"";
+//     const newUser = new helper(firstName,lastName,username,password,note);
+//     console.log(newUser);
+// }
+
+
+// function helper(firstname,lastname,username,password,note){
+//     this.firstName = firstname;
+//     this.lastName = lastname; 
+//     this.username = username;
+//     this.password = password;
+//     this.note = note;
+// }
+
+
+// helper.prototype.setNote = function(note){
+//     this.note = note;
+// }
+
+// helper.prototype.setFirstname = function(firstname){
+//     this.firstName = firstname;
+// }
+
+// helper.prototype.setLastname = function(lastname){
+//     this.lastName = lastname;
+// }
+
+// helper.prototype.setUsername = function(username){
+//     this.userName = username;
+// }
+
+// helper.prototype.setPassword = function(password){
+//    this.password = password;
+// }
+
+// helper.prototype.getNote = function(){
+//     return this.note;
+// }
+
+// helper.prototype.getFirstname = function(){
+//     return this.firstName;
+// }
+
+// helper.prototype.getLastname = function(){
+//     return this.lastName;
+// }
+
+// helper.prototype.getUsername = function(){
+//     return this.username;
+// }
+
+// helper.prototype.getPassword = function(){
+//    return this.password;
+// }
+
+let logout = document.getElementById("logout-btn");
+if(logout) logout.addEventListener('click', removeCurrentUser)
+
+// stateful mechanism for user
+// logging in a user
+export function setCurrentUser(user) {
+  localStorage.setItem('user', JSON.stringify(user));
 }
 
-
-function helper(firstname,lastname,username,password,note){
-    this.firstName = firstname;
-    this.lastName = lastname; 
-    this.username = username;
-    this.password = password;
-    this.note = note;
+// getting current user function
+export function getCurrentUser() {
+  return JSON.parse(localStorage.getItem('user'));
 }
 
-
-helper.prototype.setNote = function(note){
-    this.note = note;
+// logout function for current user
+export function removeCurrentUser() {
+  localStorage.removeItem('user');
+  window.location.href = "login.html";
 }
-
-helper.prototype.setFirstname = function(firstname){
-    this.firstName = firstname;
-}
-
-helper.prototype.setLastname = function(lastname){
-    this.lastName = lastname;
-}
-
-helper.prototype.setUsername = function(username){
-    this.userName = username;
-}
-
-helper.prototype.setPassword = function(password){
-   this.password = password;
-}
-
-helper.prototype.getNote = function(){
-    return this.note;
-}
-
-helper.prototype.getFirstname = function(){
-    return this.firstName;
-}
-
-helper.prototype.getLastname = function(){
-    return this.lastName;
-}
-
-helper.prototype.getUsername = function(){
-    return this.username;
-}
-
-helper.prototype.getPassword = function(){
-   return this.password;
-}
-
