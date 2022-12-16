@@ -7,9 +7,9 @@
 //   .catch((err)=> console.log(err))
 // }
 
-let nav = document.querySelector('nav');
+// let nav = document.querySelector('nav');
 
-async function fetchData(route = '', data = {}, GET) {
+export async function fetchData(route = '', data = {}, GET) {
     const response = await fetch(`http://localhost:3000${route}`, {
       method: GET, // *GET, POST, PUT, DELETE, etc.
       mode: 'cors', // no-cors, *cors, same-origin
