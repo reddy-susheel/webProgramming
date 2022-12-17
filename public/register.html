@@ -18,7 +18,7 @@
     <img src="images/registerImage1.jpg" alt="Random Character" width="500" height="300" id="regImg">
     <h1>Join the club</h1>
     <h2>Enter your details here</h2>
-    <form id="fillTheBlanks">
+    <form id="registerForm">
         <fieldset>
             <label for="fName">First Name</label>
             <input type="text" id="fName" for="fName">
@@ -26,8 +26,8 @@
             <label for="lName">Last Name</label>
             <input type="text" id="lName" for="lName">
             <br>
-            <label for="uName/eMail">Username/Email-ID</label>
-            <input type="text" id="uName/eMail" for="uName/eMail">
+            <label for="eMail">Username/Email-ID</label>
+            <input type="text" id="eMail" for="eMail">
             <br>
             <label for="pwd">Create Password</label>
             <input type="text" id="pwd" for="pwd">
@@ -35,7 +35,8 @@
             <label for="cPwd">Confirm Password</label>
             <input type="password" id="cPwd" for="cPwd">
             <br>
-            <button formaction="successfulReg.html" id="submit">Submit</button>
+            <!-- <button formaction="successfulReg.html" id="submit">Submit</button> -->
+            <button id="submit"> Submit </button>
             <input type="reset" value="Clear">
         </fieldset>
     </form>
@@ -48,6 +49,7 @@
         The doctor said it would be less than a year. That gave him a year to live, something he'd failed to do 
         with his daily drudgery of a routine that had passed as life until then.
     </div>
-    <script src="main.js"></script>
+    <script type="module" src="scripts/main.js"></script>
+    <script type="module" src="scripts/user.js"></script>
 </body>
 </html>

@@ -22,12 +22,15 @@ async function getAllNotes() {
   console.log(consolePrint)
 }
 
-async function read(note) {
-  
-    const sql = `INSERT INTO notes (noteContent, userID)
-      VALUES ("${note.noteContent}", "${note.userID}");
-    `
-    await con.query(sql);
+async function insertNotes(note) {
+  console.log("26",note.noteContent)
+  // let cNote = await getNotes(note);
+  // if(cNote.length > 0);
+  const sql = `INSERT INTO notes (noteContent, userID)
+    VALUES ('${note.noteContent}', ${note.userID});
+  `
+  return await con.query(sql);
+  // return await getNotes(note);
   }
 
 // Update User function
@@ -53,18 +56,10 @@ async function deleteNotes(notes) {
 // Useful Functions
 async function getNotes(notes) {
   let sql;
-
-  if(notes.noteID) {
-    sql = `
-      SELECT * FROM notes
-       WHERE userID = ${notes.userID}
-    ;`;
-  } else {
-    sql = `
+  sql = `
     SELECT * FROM notes
-      WHERE noteID = "${notes.noteID}"
+      WHERE userID = ${notes.userID}
   ;`;
-  }
   return await con.query(sql);  
 }
 
@@ -74,4 +69,13 @@ async function getMaxId(){
     return await con.query(sql);
 }
 
-module.exports = { getAllNotes, read, getNotes, editNotes, deleteNotes,getMaxId};
+function read(note) { // {userName: "sda", password: "gsdhjsga"}
+  let Unotes = notes.filter( u => u.note === note.note);
+  
+  if(!Unotes[0]) throw Error("Note not found");
+  // if(cUser[0].password !== user.password) throw Error("Password incorrect");
+
+  return Unotes[0];
+}
+
+module.exports = { getAllNotes, insertNotes, getNotes, editNotes, deleteNotes,getMaxId,read};

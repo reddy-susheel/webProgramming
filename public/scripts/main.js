@@ -9,9 +9,9 @@
 
 // let nav = document.querySelector('nav');
 
-export async function fetchData(route = '', data = {}, GET) {
+export async function fetchData(route = '', data = {}, methodType) {
     const response = await fetch(`http://localhost:3000${route}`, {
-      method: GET, // *GET, POST, PUT, DELETE, etc.
+      method: methodType, // *GET, POST, PUT, DELETE, etc.
       mode: 'cors', // no-cors, *cors, same-origin
       cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
       credentials: 'same-origin', // include, *same-origin, omit
@@ -36,7 +36,7 @@ export async function fetchData(route = '', data = {}, GET) {
 //     e.preventDefault();
 //     let firstName = ((document.getElementById("fName")||{}).value)||"";
 //     let lastName = ((document.getElementById("lName")||{}).value)||"";
-//     let username = ((document.getElementById("uName/eMail")||{}).value)||"";
+//     let username = ((document.getElementById("eMail")||{}).value)||"";
 //     let password = ((document.getElementById("pwd")||{}).value)||"";
 //     let note = ((document.getElementById("notes")||{}).value)||"";
 //     const newUser = new helper(firstName,lastName,username,password,note);

@@ -2,11 +2,11 @@ import { fetchData, setCurrentUser } from './main.js'
 
 // user class
 class User {
-  constructor(firstname, lastname, username, pswd) {
+  constructor(firstname, lastname, eMail, password) {
     this.firstName = firstname;
     this.lastName = lastname;
-    this.emailID = username;
-    this.password = pswd;
+    this.emailID = eMail;
+    this.password = password;
   }
 
   getUsername() {
@@ -15,15 +15,15 @@ class User {
 }
 
 // login functionality
-let loginForm = document.getElementById("login-form");
+let loginForm = document.getElementById("loginForm");
 if(loginForm) loginForm.addEventListener('submit', login);
 
 function login(e) {
   e.preventDefault();
 
-  let userID = document.getElementById("uName/eMail").value;
+  let eMail = document.getElementById("eMail").value;
   let password = document.getElementById("pwd").value;
-  let user = new User(userID, password);
+  let user = new User("","",eMail, password);
 
   fetchData("/users/login", user, "POST")
   .then((data) => {
@@ -37,22 +37,22 @@ function login(e) {
 }
  
 // register functionality
-let regForm = document.getElementById("reg-form");
+let regForm = document.getElementById("registerForm");
 if(regForm) regForm.addEventListener('submit', register);
 
 function register(e) {
   e.preventDefault();
 
-  let firstname = document.getElementById("firstName");
-  let lastname = document.getElementById("lastName");
-  let userID = document.getElementById("uName/eMail").value;
-  let password = document.getElementById("pswd").value;
-  let user = new User(firstname, lastname, userID, password);
+  let firstname = document.getElementById("fName").value;
+  let lastname = document.getElementById("lName").value;
+  let eMail = document.getElementById("eMail").value;
+  let password = document.getElementById("cPwd").value;
+  let user = new User(firstname, lastname, eMail, password);
 
   fetchData("/users/register", user, "POST")
   .then((data) => {
     setCurrentUser(data);
-    window.location.href = "notes.html";
+    window.location.href = "login.html";
   })
   .catch((err) =>{
     let p = document.querySelector('.error');
