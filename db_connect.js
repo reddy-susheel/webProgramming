@@ -13,8 +13,8 @@ const query = (sql, binding) => {
     con.query(sql, binding, (err, result, fields)=> {
       if(err) reject(err);
       resolve(result);
-    })
-  })
-}
+    });
+  });
+};
 
 module.exports = {con, query};
